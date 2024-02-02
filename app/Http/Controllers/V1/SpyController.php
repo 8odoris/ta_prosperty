@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers\V1;
 
-use App\Http\Controllers\Controller;
 use App\Http\Requests\IndexSpyRequest;
 use App\Http\Requests\StoreSpyRequest;
 use App\Http\Resources\SpyResource;
@@ -11,8 +10,10 @@ use Illuminate\Http\JsonResponse;
 use Illuminate\Pagination\Paginator;
 use Symfony\Component\HttpFoundation\Response;
 
-class SpyController extends Controller
+class SpyController extends ApiController
 {
+
+    protected array $publicMethods = ['index', 'random'];
 
     /**
      * Display a listing of the resource.

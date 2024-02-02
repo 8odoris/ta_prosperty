@@ -16,6 +16,7 @@ trait HasFilters
                 'orderBy' => $this->multipleOrderBy($query, $filter),
                 'age' => $query->whereBetween(DBHelper::calcAge('birth_date', 'death_date'), [$filter['min'], $filter['max']]),
                 'full_name' => $query->where(DBHelper::concatAs('name', 'surname'), 'like', "%$filter%"),
+                default => null,
             };
         }
 

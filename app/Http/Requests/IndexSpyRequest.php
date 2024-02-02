@@ -22,13 +22,14 @@ class IndexSpyRequest extends FormRequest
     public function rules(): array
     {
         return [
-            '*' => ['in:orderBy,age,full_name'],
+            '*' => ['in:orderBy,age,full_name,page'],
             'orderBy' => ['sometimes', 'array:full_name,birth_date,death_date'],
             'orderBy.*' => ['string', 'in:asc,desc'],
             'age' => ['sometimes', 'array', 'required_array_keys:min,max'],
             'age.min' => ['integer', 'min:0'],
             'age.max' => ['integer', 'gte:age.min'],
             'full_name' => ['sometimes', 'string', 'nullable'],
+            'page' => ['sometimes', 'integer', 'min:1'],
         ];
     }
 }
